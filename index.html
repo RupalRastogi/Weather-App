@@ -9,15 +9,81 @@
 </head>
 <body>
     <div class="wrapper">
-        
+
        <h1>WEATHER APP</h1>
 
-       <div class="tab">
-        
+       <div class="tab-container">
+        <p class="tab" data-userWeather>Your Weather</p>
+        <p class="tab" data-searchWeather>Search Weather</p>
        </div>
 
-       
+        <div class="weather-container">
+
+            <!-- grant location container -->
+
+            <div class="grant-location-conatiner">
+
+                <i class="fa-solid fa-location-dot fa-xl"></i>
+                <P>Allow Access to get weather Imformation</P>
+                <button class="btn" data-grantAccess>Grant Access</button>
+
+            </div>
+
+
+            <!-- search weather form -->
+
+            <form class="form-container" data-search>
+                <input placeholder="search for city..." data-search-Input>
+                <button class="btn">
+                <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+                </button>
+            </form>
+
+            <!-- loading screen container -->
+
+            <div class="loading-container">
+               <img src="./loadingimage.gif" width="150" height="150" loading="lazy"> 
+            </div>
+            
+
+            <!-- weather information conatiner that show in UI -->
+            <div class="user-info-container">
+                
+                   <!--all are dynamic values -->
+              
+                <!-- city name and flag -->
+                <div class="yourlocation">
+                    <p data-cityName></p>
+                    <img data-country-flag>
+                </div>
+                 
+                <!-- weather Description -->
+                <p data-weatherDescription></p>
+
+                <!-- weather Icon -->
+                <img data-weatherIcon>
+                
+                <!-- temperature -->
+                <p data-temp></p>
+
+               <!-- 3 cards - parameters -->
+                <div class="parameter-container">
+
+                    <!-- card 1 -->
+                    <div></div>
+                    
+                    <div></div>
+                    <div></div>
+                </div>
+
+
+            </div>
+            
+
+        </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="index.js"></script>
 </body>
 </html>

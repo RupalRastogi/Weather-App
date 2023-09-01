@@ -18,7 +18,8 @@
        </div>
 
         <div class="weather-container">
-
+            
+            <!-- UI-1 -->
             <!-- grant location container -->
 
             <div class="grant-location-conatiner">
@@ -29,7 +30,7 @@
 
             </div>
 
-
+            <!-- UI-2 -->
             <!-- search weather form -->
 
             <form class="form-container" data-search>
@@ -39,6 +40,8 @@
                 </button>
             </form>
 
+
+            <!-- UI-3 -->
             <!-- loading screen container -->
 
             <div class="loading-container">
@@ -46,7 +49,8 @@
             </div>
             
 
-            <!-- weather information conatiner that show in UI -->
+            <!-- UI-4 -->
+            <!-- weather information conatiner -->
             <div class="user-info-container">
                 
                    <!--all are dynamic values -->
@@ -70,10 +74,31 @@
                 <div class="parameter-container">
 
                     <!-- card 1 -->
-                    <div></div>
-                    
-                    <div></div>
-                    <div></div>
+                    <div class="parameter">
+                        <img src="./windimage.jpeg"  width="150" height="150">
+                        <p>Windspeed</p>
+
+                        <!-- add dynamically -->
+                        <p data-windspped></p>
+                    </div>
+
+                    <!-- card 2 -->
+                    <div class="parammeter">
+                      <img src="./humidityimage.jpg"  width="150" height="150">
+                      <p>Humidity</p>
+
+                        <!-- add dynamically -->
+                      <p data-humidity></p>
+                    </div>
+
+                    <!-- card 3 -->
+                    <div class="parameter">
+                       <img src="./cloudimage.jpeg"  width="150" height="150">
+                      <p>Clouds</p>
+
+                        <!-- add dynamically -->
+                      <p data-cloudiness></p>
+                    </div>
                 </div>
 
 

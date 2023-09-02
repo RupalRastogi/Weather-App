@@ -58,7 +58,68 @@ function switchTab(newTab){
           grantAccessContainer.classList.add("active");
         }
         else{
-            //if local coordinates are present
-
+            //if local coordinates are present then call api
+            //JSON.parse ----> json string ko json object mi change karta hai
+             const coordinates = JSON.parse(localcoordinates);
+             fetchUserWeatherInfo(coordinates);
         }
     }
+
+    async function fetchUserWeatherInfo(coordinates){
+      const{lat,long}= coordinates;
+      // make grant container invisible
+      grantAccessContainer.classList.remove("active");
+      // make loding screen visible
+      loadingScreen.classList.add("active");
+
+      // API CALL
+      try{
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}`);
+      const data = await response.JSON();
+             
+      loadingScreen.classList.remove("active");
+      userInfoContainer.classList.add("active");
+
+      // render weather info in UI
+      renderWeatherInfo(data);
+      
+      }
+      catch(err){
+      loadingScreen.classList.remove("active");
+            
+      }
+   }
+
+   function renderWeatherInfo(weatherInfo){
+      // first have to fetch the element
+
+      const cityName  = document.querySelector("[data-cityName]");
+      const countryIcon = document.querySelector("[data-country-flag]");
+      const desc = document.querySelector("[data-weatherDescription]");
+      const weatherIcon  = document.querySelector("[data-weatherIcon]");
+      const temp  = document.querySelector("[data-temp]");
+      const windSpped  = document.querySelector("[ data-windspped]");
+      const humidity  = document.querySelector("[data-humidity]");
+      const cloudiness =  document.querySelector("[data-cloudiness]");
+ 
+
+      // -----optional chaining operator(?.)----------- that makes easier to safely access the nested property
+      //It provides a way to access properties and methods of an object without causing an error if any intermediary property or object is null or undefined. This operator is particularly useful when working with nested object structures or when dealing with optional properties that may or may not exist.
+
+        cityName.innerText = weatherInfo?.name;
+
+        countryIcon.src = `"https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`;
+
+        desc.innerText = weatherInfo?.weather?.[0]?.description;
+
+        weatherIcon.src = `http://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
+
+         temp.innerText = weatherInfo?.main?.temp;
+
+         windSpped.innerText = weatherInfo?.wind?.speed;
+
+         humidity.innerText = weatherInfo?.main?.humidity
+
+         cloudiness.innerText = weatherInfo?.clouds?.all;
+
+   }

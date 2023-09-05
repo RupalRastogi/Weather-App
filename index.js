@@ -68,7 +68,7 @@ function switchTab(newTab){
     }
 
     async function fetchUserWeatherInfo(coordinates){
-      const {lat,long}= coordinates;
+      const {lat,lon}= coordinates;
       // make grant container invisible
       grantAccessContainer.classList.remove("active");
       // make loding screen visible
@@ -76,7 +76,7 @@ function switchTab(newTab){
 
       // API CALL
       try{
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}`);
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
       const data = await response.JSON();
              
       loadingScreen.classList.remove("active");
@@ -139,15 +139,15 @@ function switchTab(newTab){
 
    function showPosition(position) {
           // object
-      const usercoodinate={
+      const usercoodinates = {
          lat: position.coords.latitude,
          lon: position.coords.longitude,
       }
 
-      sessionStorage.setItem("user-coordinates" , JSON.stringify(usercoodinate));
+      sessionStorage.setItem("user-coordinates" , JSON.stringify(usercoodinates));
 
       // show i UI
-      fetchUserWeatherInfo(usercoodinate);
+      fetchUserWeatherInfo(usercoodinates);
    }
     
 
@@ -182,7 +182,7 @@ function switchTab(newTab){
       try{
          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`);
 
-         const data = await response.json();
+         const data = await response.JSON();
 
          loadingScreen.classList.remove("active");
          userInfoContainer.classList.add("active");

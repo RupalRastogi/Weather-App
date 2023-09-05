@@ -128,17 +128,16 @@ function switchTab(newTab){
 
    // listner for grant access button to find current locatio of user
 
-   function getLocation(){
+   function getLocation() {
       // location supported
-      if(navigator.geolocation){
-         navigator.geolocation.getCurrentPosition(showPosition);
-      }
-      else{
+   if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+   } else {
          alert("Geo Location support not available");
       }
    }
 
-   function  showPosition(position){
+   function showPosition(position) {
           // object
       const usercoodinate={
          lat: position.coords.latitude,
@@ -150,6 +149,7 @@ function switchTab(newTab){
       // show i UI
       fetchUserWeatherInfo(usercoodinate);
    }
+    
 
    const grantAccessButton = document.querySelector("[data-grantAccess]");
    grantAccessButton.addEventListener("click" , getLocation);

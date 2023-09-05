@@ -23,8 +23,8 @@
             <!-- grant location container -->
 
             <div class="grant-location-conatiner">
-
-                <i class="fa-solid fa-location-dot fa-xl"></i>
+                <img src="locationimage.png" width="60" height="80" loadig="lazy">  
+                <p>Grant location Access</p>
                 <P>Allow Access to get weather Imformation</P>
                 <button class="btn" data-grantAccess>Grant Access</button>
 
@@ -34,9 +34,9 @@
             <!-- search weather form -->
 
             <form class="form-container" data-searchform>
-                <input placeholder="search for city..." data-search-Input type="submit">
-                <button class="btn">
-                <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+                <input  placeholder="search for city..." data-search-Input >
+                <button class="btn" type="submit">
+               <img src="searchimage.png" height="20" loadig="lazy">
                 </button>
             </form>
 
@@ -46,6 +46,7 @@
 
             <div class="loading-container">
                <img src="./loadingimage.gif" width="150" height="150" loading="lazy"> 
+               <p>Loading</p>
             </div>
             
 
@@ -56,9 +57,9 @@
                    <!--all are dynamic values -->
               
                 <!-- city name and flag -->
-                <div class="yourlocation">
+                <div class="yourlocation">       <!--name-->
                     <p data-cityName></p>
-                    <img data-country-flag>
+                    <img data-country-flag>  <!--data-countryIcon-->
                 </div>
                  
                 <!-- weather Description -->
@@ -108,7 +109,7 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <script src="index.js"></script>
 </body>
 </html>

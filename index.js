@@ -1,3 +1,4 @@
+
 const userTab = document.querySelector("[data-userWeather]");
 const searchTab = document.querySelector("[data-searchWeather]");
 const userContainer = document.querySelector(".weather-container");
@@ -30,122 +31,128 @@ function switchTab(newTab){
         grantAccessContainer.classList.remove("active");
         // only this will visible in UI
         searchform.classList.add("active");
-       }
-       else{
-        // i am on search tab but now i have to visible the YourWeather tab
-        searchform.classList.remove("active");
-        userInfoContainer.classList.remove("active");
-
-        // i am on weather tab , have to display whether now , so lets check local storage first for coordinates , if we hav saved them there.
-          getfromSessionStorage(); 
-       }
-    }
-
- userTab.addEventListener('click' , ()=>{
-    // pass clicked tab as input parameter
-    switchTab(userTab);
- });
- searchTab.addEventListener('click' , ()=>{
-    // pass clicked tab as input parameter
-    switchTab(searchTab);
- });
-
-
- 
-    // check if coordinate already present in session storage
-    function getfromSessionStorage(){
-        const localcoordinates = sessionStorage.getItem("user-coordinates");
-        if(!localcoordinates){
-          //if no local coordinates
-          grantAccessContainer.classList.add("active");
-        }
-        else{
-            //if local coordinates are present then call api
-            //JSON.parse ----> json string ko json object mi change karta hai
-             const coordinates = JSON.parse(localcoordinates);
-             fetchUserWeatherInfo(coordinates);
-        }
-    }
-
-    async function fetchUserWeatherInfo(coordinates){
-      const {lat,lon}= coordinates;
-      // make grant container invisible
-      grantAccessContainer.classList.remove("active");
-      // make loding screen visible
-      loadingScreen.classList.add("active");
-
-      // API CALL
-      try{
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
-      const data = await response.JSON();
-             
-      loadingScreen.classList.remove("active");
-      userInfoContainer.classList.add("active");
-
-      // render weather info in UI
-      renderWeatherInfo(data);
-      
       }
-      catch(err){
-      loadingScreen.classList.remove("active");
-       // error     
+      else{
+       // i am on search tab but now i have to visible the YourWeather tab
+       searchform.classList.remove("active");
+       userInfoContainer.classList.remove("active");
+
+       // i am on weather tab , have to display whether now , so lets check local storage first for coordinates , if we hav saved them there.
+         getfromSessionStorage(); 
       }
    }
 
-   function renderWeatherInfo(weatherInfo){
-      // first have to fetch the element
+userTab.addEventListener('click' , ()=>{
+   // pass clicked tab as input parameter
+   switchTab(userTab);
+});
+searchTab.addEventListener('click' , ()=>{
+   // pass clicked tab as input parameter
+   switchTab(searchTab);
+});
 
-      const cityName  = document.querySelector("[data-cityName]");
-      const countryIcon = document.querySelector("[data-country-flag]");
-      const desc = document.querySelector("[data-weatherDescription]");
-      const weatherIcon  = document.querySelector("[data-weatherIcon]");
-      const temp  = document.querySelector("[data-temp]");
-      const windSpeed  = document.querySelector("[ data-windspped]");
-      const humidity  = document.querySelector("[data-humidity]");
-      const cloudiness =  document.querySelector("[data-cloudiness]");
- 
 
-      // -----optional chaining operator(?.)----------- that makes easier to safely access the nested property
-      //It provides a way to access properties and methods of an object without causing an error if any intermediary property or object is null or undefined. This operator is particularly useful when working with nested object structures or when dealing with optional properties that may or may not exist.
 
-        cityName.innerText = weatherInfo?.name;
-
-        countryIcon.src = `https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`;
-
-        desc.innerText = weatherInfo?.weather?.[0]?.description;
-
-        weatherIcon.src = `http://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
-
-         temp.innerText = weatherInfo?.main?.temp;
-
-         windSpeed.innerText = weatherInfo?.wind?.speed;
-
-         humidity.innerText = weatherInfo?.main?.humidity
-
-         cloudiness.innerText = weatherInfo?.clouds?.all;
-
-   }
-
-   // listner for grant access button to find current locatio of user
-
-   function getLocation() {
-      // location supported
-   if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-   } else {
-         alert("Geo Location support not available");
+   // check if coordinate already present in session storage
+   function getfromSessionStorage(){
+       const localcoordinates = sessionStorage.getItem("user-coordinates");
+       if(!localcoordinates){
+         //if no local coordinates
+         grantAccessContainer.classList.add("active");
       }
-   }
+      else{
+          //if local coordinates are present then call api
+          //JSON.parse ----> json string ko json object mi change karta hai
+           const coordinates = JSON.parse(localcoordinates);
+           fetchUserWeatherInfo(coordinates);
+      }
+  }
 
-   function showPosition(position) {
-          // object
-      const usercoodinates = {
+  async function fetchUserWeatherInfo(coordinates){
+    const { lat, lon } = coordinates;
+    // make grant container invisible
+    grantAccessContainer.classList.remove("active");
+    // make loding screen visible
+    loadingScreen.classList.add("active");
+
+    // API CALL
+    try{
+       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
+       const data = await response.json();
+
+           
+    loadingScreen.classList.remove("active");
+    userInfoContainer.classList.add("active");
+    console.log(lat);
+    // render weather info in UI
+    renderWeatherInfo(data);
+  
+   }
+   catch(err){
+   loadingScreen.classList.remove("active");
+    // error     
+   }
+}
+
+function renderWeatherInfo(weatherInfo){
+   // first have to fetch the element
+
+   const cityName  = document.querySelector("[data-cityName]");
+   const countryIcon = document.querySelector("[data-country-flag]");
+   const desc = document.querySelector("[data-weatherDescription]");
+   const weatherIcon  = document.querySelector("[data-weatherIcon]");
+   const temp  = document.querySelector("[data-temp]");
+   const windSpeed  = document.querySelector("[ data-windspped]");
+   const humidity  = document.querySelector("[data-humidity]");
+   const cloudiness =  document.querySelector("[data-cloudiness]");
+
+
+   // -----optional chaining operator(?.)----------- that makes easier to safely access the nested property
+   //It provides a way to access properties and methods of an object without causing an error if any intermediary property or object is null or undefined. This operator is particularly useful when working with nested object structures or when dealing with optional properties that may or may not exist.
+
+     cityName.innerText = weatherInfo?.name;
+
+     countryIcon.src = `https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`;
+
+     desc.innerText = weatherInfo?.weather?.[0]?.description;
+
+     weatherIcon.src = `http://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
+
+      temp.innerText = weatherInfo?.main?.temp;
+
+      windSpeed.innerText = weatherInfo?.wind?.speed;
+
+      humidity.innerText = weatherInfo?.main?.humidity
+
+      cloudiness.innerText = weatherInfo?.clouds?.all;
+
+}
+
+// listner for grant access button to find current locatio of user
+
+function getLocation() {
+   // location supported
+if (navigator.geolocation) {
+   navigator.geolocation.getCurrentPosition(showPosition);
+} else {
+      alert("Geo Location support not available");
+   }
+}
+
+function showPosition(position) {
+       // object
+       const usercoodinates = {
          lat: position.coords.latitude,
          lon: position.coords.longitude,
       }
 
       sessionStorage.setItem("user-coordinates" , JSON.stringify(usercoodinates));
-
+      if (usercoodinates.lat !== undefined && usercoodinates.lon !== undefined) {
+         fetchUserWeatherInfo(usercoodinates);
+      } else {
+         console.log("Failed to obtain coordinates.");
+         alert("Failed to obtain coordinates.");
+      }
       // show i UI
       fetchUserWeatherInfo(usercoodinates);
    }
@@ -169,12 +176,12 @@ function switchTab(newTab){
          return;
         }
         else{
-         fetchUserWeatherInfo(cityName);
+         fetchUserWeatherInfoo(cityName);
         }
 
    } )
 
-   async function fetchUserWeatherInfo(city){
+   async function fetchUserWeatherInfoo(city){
       loadingScreen.classList.add("active");
       userInfoContainer.classList.remove("active");
       grantAccessContainer.classList.remove("active");
@@ -182,7 +189,7 @@ function switchTab(newTab){
       try{
          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`);
 
-         const data = await response.JSON();
+         const data = await response.json();
 
          loadingScreen.classList.remove("active");
          userInfoContainer.classList.add("active");
@@ -190,6 +197,5 @@ function switchTab(newTab){
          renderWeatherInfo(data);
       }
       catch(err){
-   // error
-      }
-   }
+      }
+   }

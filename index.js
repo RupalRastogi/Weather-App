@@ -106,7 +106,7 @@ function renderWeatherInfo(weatherInfo){
    const humidity  = document.querySelector("[data-humidity]");
    const cloudiness =  document.querySelector("[data-cloudiness]");
 
-
+    console.log(weatherInfo);
    // -----optional chaining operator(?.)----------- that makes easier to safely access the nested property
    //It provides a way to access properties and methods of an object without causing an error if any intermediary property or object is null or undefined. This operator is particularly useful when working with nested object structures or when dealing with optional properties that may or may not exist.
 
@@ -118,13 +118,13 @@ function renderWeatherInfo(weatherInfo){
 
      weatherIcon.src = `http://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
 
-      temp.innerText = weatherInfo?.main?.temp;
+      temp.innerText = `${weatherInfo?.main?.temp} °C `;
 
-      windSpeed.innerText = weatherInfo?.wind?.speed;
+      windSpeed.innerText = `${weatherInfo?.wind?.speed} m/s`;
 
-      humidity.innerText = weatherInfo?.main?.humidity
+      humidity.innerText = `${weatherInfo?.main?.humidity} %`
 
-      cloudiness.innerText = weatherInfo?.clouds?.all;
+      cloudiness.innerText = `${weatherInfo?.clouds?.all} %`;
 
 }
 

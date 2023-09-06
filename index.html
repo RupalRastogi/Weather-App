@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>weather app</title>
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">
+     
+    <!-- css link -->
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -22,7 +28,7 @@
             <!-- UI-1 -->
             <!-- grant location container -->
 
-            <div class="grant-location-conatiner">
+            <div class="sub-contaier grant-location-conatiner">
                 <img src="locationimage.png" width="60" height="80" loadig="lazy">  
                 <p>Grant location Access</p>
                 <P>Allow Access to get weather Imformation</P>
@@ -36,7 +42,8 @@
             <form class="form-container" data-searchform>
                 <input  placeholder="search for city..." data-search-Input >
                 <button class="btn" type="submit">
-               <img src="searchimage.png" height="20" loadig="lazy">
+                <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+               <!-- <img src="searchimage.png" height="20" loadig="lazy"> -->
                 </button>
             </form>
 
@@ -44,7 +51,7 @@
             <!-- UI-3 -->
             <!-- loading screen container -->
 
-            <div class="loading-container">
+            <div class="sub-contaier loading-container">
                <img src="./loadingimage.gif" width="150" height="150" loading="lazy"> 
                <p>Loading</p>
             </div>
@@ -52,7 +59,7 @@
 
             <!-- UI-4 -->
             <!-- weather information conatiner -->
-            <div class="user-info-container">
+            <div class="sub-contaier user-info-container">
                 
                    <!--all are dynamic values -->
               
@@ -84,7 +91,7 @@
                     </div>
 
                     <!-- card 2 -->
-                    <div class="parammeter">
+                    <div class="parameter">
                       <img src="./humidityimage.jpg"  width="150" height="150">
                       <p>Humidity</p>
 
@@ -94,7 +101,7 @@
 
                     <!-- card 3 -->
                     <div class="parameter">
-                       <img src="./cloudimage.jpeg"  width="150" height="150">
+                       <img src="./cloud.png"  width="150" height="150">
                       <p>Clouds</p>
 
                         <!-- add dynamically -->
@@ -109,7 +116,10 @@
         </div>
     </div>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <!-- font awsome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- js -->
     <script src="index.js"></script>
 </body>
 </html>

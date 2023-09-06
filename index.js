@@ -58,7 +58,7 @@ searchTab.addEventListener('click' , ()=>{
        const localcoordinates = sessionStorage.getItem("user-coordinates");
        if(!localcoordinates){
          //if no local coordinates
-         grantAccessContainer.classList.add("active");
+         grantAccessContainer.classList.add("active");         
       }
       else{
           //if local coordinates are present then call api

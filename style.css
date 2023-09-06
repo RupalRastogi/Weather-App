@@ -207,7 +207,7 @@ h1{
     gap: 0 10px;
     margin-bottom: 3rem;
 }
-.form-container{
+.form-container .active{
     display: flex;
 }
 

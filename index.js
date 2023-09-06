@@ -7,7 +7,7 @@ const searchform = document.querySelector("[data-searchform]");
 const loadingScreen = document.querySelector(".loading-container");
 const userInfoContainer = document.querySelector(".user-info-container");
 
-
+const errorHandle = document.querySelector(".error");
 
 // current tab or default tab
 let oldTab = userTab;
@@ -89,8 +89,9 @@ searchTab.addEventListener('click' , ()=>{
   
    }
    catch(err){
-   loadingScreen.classList.remove("active");
-    // error     
+    loadingScreen.classList.remove("active");
+    // error   
+    handleWeatherError();
    }
 }
 
@@ -136,6 +137,7 @@ if (navigator.geolocation) {
    navigator.geolocation.getCurrentPosition(showPosition);
 } else {
       alert("Geo Location support not available");
+      handleWeatherError();
    }
 }
 
@@ -197,5 +199,13 @@ function showPosition(position) {
          renderWeatherInfo(data);
       }
       catch(err){
-      }
-   }
+      userInfoContainer.classList.remove("active");
+      handleWeatherError();
+    }
+   }
+
+
+   function handleWeatherError(){
+      console.log("Error Happen");
+      errorHandle.classList.add("error-image");
+   }

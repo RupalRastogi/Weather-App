@@ -90,6 +90,7 @@ searchTab.addEventListener('click' , ()=>{
    }
    catch(err){
     loadingScreen.classList.remove("active");
+
     // error   
     handleWeatherError();
    }
@@ -137,7 +138,7 @@ if (navigator.geolocation) {
    navigator.geolocation.getCurrentPosition(showPosition);
 } else {
       alert("Geo Location support not available");
-      handleWeatherError();
+      // handleWeatherError();
    }
 }
 

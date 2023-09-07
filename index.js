@@ -7,7 +7,7 @@ const searchform = document.querySelector("[data-searchform]");
 const loadingScreen = document.querySelector(".loading-container");
 const userInfoContainer = document.querySelector(".user-info-container");
 
-const errorHandle = document.querySelector(".error");
+const errorHandle = document.querySelector("#err");
 
 // current tab or default tab
 let oldTab = userTab;
@@ -80,7 +80,7 @@ searchTab.addEventListener('click' , ()=>{
        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
        const data = await response.json();
 
-           
+
     loadingScreen.classList.remove("active");
     userInfoContainer.classList.add("active");
     console.log(lat);
@@ -191,6 +191,13 @@ function showPosition(position) {
 
       try{
          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`);
+         
+        if (response.status === 404) {
+         // Display an error message and show the error image
+         handleWeatherError();
+         return;
+     }
+
 
          const data = await response.json();
 
@@ -205,8 +212,15 @@ function showPosition(position) {
     }
    }
 
-
-   function handleWeatherError(){
-      console.log("Error Happen");
+   function handleWeatherError() {
+      console.log("inside error")
+      loadingScreen.classList.remove("active");
+      userInfoContainer.classList.remove("active");
       errorHandle.classList.add("error-image");
-   }
+
+      setTimeout(() => {
+         errorHandle.classList.remove("error-image");
+     }, 3000); 
+  }
+ 
+  

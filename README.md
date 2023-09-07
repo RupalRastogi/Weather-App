@@ -2,10 +2,15 @@
 
 # Table of Contents:
 Description 
+
 Features
+
 Usage
+
 Screenshots
+
 Contributing
+
 
 # Description:
 

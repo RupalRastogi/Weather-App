@@ -1,17 +1,5 @@
 # Weather-App
 
-# Table of Contents:
-Description 
-
-Features
-
-Usage
-
-Screenshots
-
-Contributing
-
-
 # Description:
 
 A simple web-based weather application that allows users to check the weather status of any city and view the current weather for their location.

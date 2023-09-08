@@ -18,7 +18,7 @@ getfromSessionStorage();
 // switching between the tabs
 function switchTab(newTab){
     // both tab are different
-    
+
      hideError();
     if(newTab != oldTab){
        oldTab.classList.remove("current_tab");
@@ -174,6 +174,7 @@ function showPosition(position) {
    searchform.addEventListener("submit" , (e)=>{
       // prevent default function of submit
         e.preventDefault();
+        hideError();
         let cityName = searchInput.value;
 
         if(cityName === ""){

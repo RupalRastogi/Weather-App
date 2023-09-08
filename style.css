@@ -265,6 +265,7 @@ h1{
 #errorImage{
     width: 20rem;
     height: 20rem;
+    margin: 0 40%;
     justify-content: center;
     align-items: center;
 }

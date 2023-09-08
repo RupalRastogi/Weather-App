@@ -241,7 +241,7 @@ h1{
    border-radius: 100%;
 }
 
-#err {
+/* #err {
     display: none;
     width: 100px;
     height: 100px;
@@ -253,4 +253,19 @@ h1{
     display: flex;
     width: 100%; 
     height: auto;
+} */
+
+
+.error {
+    display: none;
+    /* Add other styles as needed */
+    /* position: absolute; Position the error container */
 }
+
+#errorImage{
+    width: 20rem;
+    height: 20rem;
+    justify-content: center;
+    align-items: center;
+}
+

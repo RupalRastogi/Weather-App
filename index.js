@@ -7,8 +7,6 @@ const searchform = document.querySelector("[data-searchform]");
 const loadingScreen = document.querySelector(".loading-container");
 const userInfoContainer = document.querySelector(".user-info-container");
 
-const errorHandle = document.querySelector("#err");
-
 // current tab or default tab
 let oldTab = userTab;
 const API_KEY = "d00d169f2972d051d77bc2b4e97e7567";
@@ -16,9 +14,12 @@ const API_KEY = "d00d169f2972d051d77bc2b4e97e7567";
 oldTab.classList.add("current_tab");
 getfromSessionStorage();
 
+
 // switching between the tabs
 function switchTab(newTab){
     // both tab are different
+    
+     hideError();
     if(newTab != oldTab){
        oldTab.classList.remove("current_tab");
        oldTab = newTab;
@@ -212,15 +213,19 @@ function showPosition(position) {
     }
    }
 
-   function handleWeatherError() {
-      console.log("inside error")
-      loadingScreen.classList.remove("active");
-      userInfoContainer.classList.remove("active");
-      errorHandle.classList.add("error-image");
+const errorContainer = document.getElementById('errorContainer');
+const errorImage = document.getElementById('errorImage');
 
-      setTimeout(() => {
-         errorHandle.classList.remove("error-image");
-     }, 3000); 
-  }
+// Function to display the error container and update the error image
+function handleWeatherError() {
+    errorContainer.style.display = 'block';
+    loadingScreen.classList.remove("active");
+    errorImage.src = 'error404.jpg'; // Set the source to your error image
+}
+
+// Function to hide the error container
+function hideError() {
+    errorContainer.style.display = 'none';
+}
  
   
